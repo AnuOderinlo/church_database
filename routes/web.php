@@ -19,10 +19,9 @@ Route::get('/', function () {
 });
 
 
+Auth::routes(['verify'=> true]);
 
-Auth::routes();
-
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/admin',  [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/admin/member', [App\Http\Controllers\UserController::class, 'member'])->name('admin.member');
@@ -31,10 +30,9 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile/{user}/update', [App\Http\Controllers\UserController::class, 'update'])->name('user.profile.update');
     Route::put('/admin/worker/{user}/delete', [App\Http\Controllers\UserController::class, 'delete_worker'])->name('worker.delete');
     Route::delete('/admin/member/{user}/delete', [App\Http\Controllers\UserController::class, 'delete_member'])->name('member.delete');
-    
+
     Route::put('profile/{user}/join', [App\Http\Controllers\UserController::class, 'join'])->name('department.join');
     Route::put('profile/{user}/leave', [App\Http\Controllers\UserController::class, 'leave'])->name('department.leave');
-
 
 
     Route::get('/admin/department', [App\Http\Controllers\DepartmentController::class, 'index'])->name('admin.department');

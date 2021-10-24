@@ -149,6 +149,25 @@
                 
             </div>
 
+            <div class="col-md-6">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img  class="img-profile img-thumbnail img-fluid h-100"  src="{{ auth()->user()->user_image }}" alt="profile image">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ Auth::user()->lastname  }} {{ Auth::user()->firstname }}</h5>
+                                <p><span>Phone number:</span> {{ Auth::user()->phone_number  }}</p>
+                                <p><span>Email:</span> {{ Auth::user()->email  }}</p>
+                                <p class="card-text"><span>Address:</span><br>  {{ Auth::user()->address  }}</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             
             
         </div>
